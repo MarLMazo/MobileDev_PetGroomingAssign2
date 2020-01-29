@@ -1,0 +1,50 @@
+﻿@model List<PetGrooming.Models.Species>
+
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List of Species</h2>
+@*@using (Html.BeginForm())
+{
+    <div>
+      @Html.TextBox("search")
+        <input type="submit" value="Search" />
+    </div>
+}*@
+
+<form action="/Species/List" method="post">
+    <div>
+        <input id="search" name="search" type="text" value="" class="form-control"/>
+        <input type="submit" value="Search" class="btn btn-default" />
+    </div>
+</form>
+
+<table>
+
+    <thead>
+        <tr>
+            <th> Species Name </th>
+            <th colspan="2"> Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @{
+            foreach (var species in @Model)
+            {
+
+                <tr>
+                    <td><a href="/Species/Show/@species.SpeciesID">@species.Name</a></td>
+                    <td><a href="/Species/Update/@species.SpeciesID">Update</a></td>
+                    <td><a href="/Species/Delete/@species.SpeciesID">Delete</a></td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+<div>
+    <a class="btn btn-default" href="/Species/Add">Add New Species</a>
+</div>

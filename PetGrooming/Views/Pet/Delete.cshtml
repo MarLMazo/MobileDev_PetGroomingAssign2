@@ -1,0 +1,52 @@
+﻿@model PetGrooming.Models.Pet
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete Pet</h2>
+
+<p>Are you sure you want to delete this?</p>
+<div>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Name:</th>
+                <td>@Model.PetName</td>
+            </tr>
+            <tr>
+                <th>Weight(kg):</th>
+                <td>@Model.Weight</td>
+            </tr>
+            <tr>
+                <th>Color:</th>
+                <td>@Model.Color</td>
+            </tr>
+            <tr>
+                <th>Species:</th>
+                <td>@Model.Species.Name</td>
+            </tr>
+            <tr>
+                <th>Notes:</th>
+                <td>@Model.Notes</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <form action="/Pet/Delete/@Model.PetID" method="post">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> 
+        </div>
+    </form>
+
+    
+
+
+</div>
+<div>
+    <a href="/Pet/List">Back to List</a>
+</div>
+

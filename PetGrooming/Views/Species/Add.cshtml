@@ -1,0 +1,26 @@
+﻿@model PetGrooming.Models.Species
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Species</h2>
+
+
+<form action="/Species/Add" method="post">
+    <div>
+        <label for="Name">Name</label>
+        <input class="form-control" id="SpeciesName" name="SpeciesName" type="text" value="" />
+        <span class="field-validation-valid text-danger" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+    </div>      
+    <div class="form-group">
+            
+        <input type="submit" value="Add Species" class="btn btn-default" />
+         
+    </div>
+  
+</form>
+<div>
+    <a href="/Species/List">Back to List</a>
+</div>

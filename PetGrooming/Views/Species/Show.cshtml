@@ -1,0 +1,26 @@
+﻿@model PetGrooming.Models.Species
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Show Species</h2>
+
+<table>
+    <tbody>
+        <tr>
+            <th>Name:</th>
+            <td>@Model.Name</td>
+        </tr>    
+    </tbody>
+
+</table>
+<div>
+    <a href="/Species/Delete/@Model.SpeciesID">Delete</a>
+</div>
+<div>
+    <a href="/Species/List">Back to List</a>
+</div>
+
+
+
+@* Show Page should not be implemented on this cause it has only one value and on the listing, it clearly show the Species Name *@
