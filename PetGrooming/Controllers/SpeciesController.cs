@@ -42,7 +42,7 @@ namespace PetGrooming.Controllers
         }
 
        
-        //This contoller is not neccessary cause species table has only name on it does it can be shown clearly on the LIST controller
+        //This contoller is not neccessary cause species table has only name on it, but it can be shown clearly on the LIST action
         public ActionResult Show(int? id)
         {
             if (id == null)
@@ -67,8 +67,7 @@ namespace PetGrooming.Controllers
             SqlParameter sqlparams = new SqlParameter("@Name", SpeciesName);
 
             db.Database.ExecuteSqlCommand(query, sqlparams);
-
-
+            //Debug.WriteLine(query);
             //run the list method to return to a list of pets so we can see our new one!
             return RedirectToAction("List");
         }
@@ -98,26 +97,19 @@ namespace PetGrooming.Controllers
         [HttpPost]
         public ActionResult Update(string SpeciesName, int id)
         {
-
+            //Source by in-class example by Christine Bittle on January 23, 2020
+            //add query in a string to be called and execute in the database
             string query = "update species set Name = @Name where SpeciesID = @id";
             SqlParameter[] sqlparams = new SqlParameter[2]; 
             sqlparams[0] = new SqlParameter("@Name", SpeciesName);
             sqlparams[1] = new SqlParameter("@id", id);
-
-
+            //Debug.WriteLine(query);
+            //execute the query in the database with parameters of sqlparams
             db.Database.ExecuteSqlCommand(query, sqlparams);
 
             return RedirectToAction("List");
 
         }
-
-
-        //TODO:
-        //Update
-        //[HttpPost] Update
-        //[HttpPost] Delete
-        //(optional) Delete
-
 
         public ActionResult Delete(int? id)
         {
