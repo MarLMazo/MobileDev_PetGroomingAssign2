@@ -1,4 +1,6 @@
-﻿@model PetGrooming.Models.Pet
+﻿@*@model PetGrooming.Models.Pet*@
+@model PetGrooming.Models.ModelView.UpdatePet
+   
 
 
 @{
@@ -6,23 +8,39 @@
 }
 
 <h2>Update Pet</h2>
-<form action="/Pet/Update/@Model.PetID" method="POST">
+<form action="/Pet/Update/@Model.Pet.PetID" method="POST">
     <div>
         <label for="PetName">Pet Name</label>
-        <input type="text" value="@Model.PetName" id="PetName" name="PetName" class="form-control" />
+        <input type="text" value="@Model.Pet.PetName" id="PetName" name="PetName" class="form-control" />
     </div>
     <div>
         <label for="PetColor">Color</label>
-        <input type="text" value="@Model.Color" id="PetColor" name="PetColor" class="form-control" />
+        <input type="text" value="@Model.Pet.Color" id="PetColor" name="PetColor" class="form-control" />
     </div>
     <div>
         <label for="PetWeight">Weight(kg)</label>
-        <input type="text" value="@Model.Weight" id="PetWeight" name="PetWeight" class="form-control" />
+        <input type="text" value="@Model.Pet.Weight" id="PetWeight" name="PetWeight" class="form-control" />
     </div>
+    <div>
+        <label for="SpeciesID">Species Name:</label>
+        <select name="SpeciesID" id="SpeciesID"  class="form-control">
+            @{
+                foreach (var Species in Model.Species)
+                {
+                    var selected = "";
+                    if (Species.SpeciesID == Model.Pet.SpeciesID)
+                    {
+                        selected = "selected";
+                    }
 
+                    <option value="@Species.SpeciesID" @selected>@Species.Name</option>
+                }
+            }
+        </select>
+    </div>
     <div>
         <label for="PetNotes">Notes</label>
-        <textarea id="PetNotes" name="PetNotes" class="form-control" rows="5">@Model.Notes</textarea>
+        <textarea id="PetNotes" name="PetNotes" class="form-control" rows="5">@Model.Pet.Notes</textarea>
     </div>
     <div>
         <input type="submit" value="Save" class="btn btn-default" />

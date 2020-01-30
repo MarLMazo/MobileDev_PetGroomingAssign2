@@ -167,6 +167,7 @@
     <Compile Include="Models\GroomBooking.cs" />
     <Compile Include="Models\Groomer.cs" />
     <Compile Include="Models\GroomService.cs" />
+    <Compile Include="Models\ModelView\UpdatePet.cs" />
     <Compile Include="Models\Owner.cs" />
     <Compile Include="Models\Pet.cs" />
     <Compile Include="Models\Species.cs" />
